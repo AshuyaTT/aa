@@ -63,7 +63,7 @@ module.exports = {
             if (color == null) color = config.bot.couleur
 
             const public = new Discord.MessageEmbed()
-                .setTitle('Commandes Publiques - Pas Finis')
+                .setTitle('Commandes Publiques')
                 .setDescription(`
     
     **\`${pf}all <bots/admins>\`**
@@ -81,6 +81,51 @@ module.exports = {
     **\`${pf}wiki <mot-clé>\`**
     **\`${pf}vc\`**
     **\`${pf}bypass\`**
+    
+    **Niveaux**
+    **\`${pf}rank [membre]\`**
+    **\`${pf}leaderboard\`**
+    
+    **Profils**
+    **\`${pf}profile [utilisateur]\`**
+    **\`${pf}setbio <texte>\`**
+    **\`${pf}setcolor <couleur>\`**
+    **\`${pf}setbanner <lien>\`**
+    
+    **Économie**
+    **\`${pf}balance [utilisateur]\`**
+    **\`${pf}daily\`**
+    **\`${pf}work\`**
+    **\`${pf}pay <utilisateur> <montant>\`**
+    **\`${pf}shop\`**
+    **\`${pf}inventory [utilisateur]\`**
+    **\`${pf}ecoleaderboard\`**
+    
+    **Invitations**
+    **\`${pf}invites [utilisateur]\`**
+    **\`${pf}invitesleaderboard\`**
+    
+    **Mini-Jeux**
+    **\`${pf}coinflip <pile/face> <montant>\`**
+    **\`${pf}dice <nombre 1-6> <montant>\`**
+    **\`${pf}rps <pierre/feuille/ciseaux> [montant]\`**
+    **\`${pf}8ball <question>\`**
+    **\`${pf}slots <montant>\`**
+    
+    **Statistiques**
+    **\`${pf}serverstats\`**
+    **\`${pf}userstats [utilisateur]\`**
+    **\`${pf}botstats\`**
+    **\`${pf}messagestats [utilisateur]\`**
+    
+    **Musique**
+    **\`${pf}play <lien/titre>\`**
+    **\`${pf}skip\`**
+    **\`${pf}stop\`**
+    **\`${pf}pause\`**
+    **\`${pf}resume\`**
+    **\`${pf}queue\`**
+    **\`${pf}volume <1-100>\`**
     
               `)
                 .setFooter({ text: `${footer} | Préfixe : ${pf}` })
@@ -322,6 +367,66 @@ module.exports = {
                             value: 'own',
                             emoji: '1247866358645919745',
                         },
+                        {
+                            label: 'Niveaux',
+                            value: 'levels',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Compteurs',
+                            value: 'counters',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Musique',
+                            value: 'music',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Auto-Modération',
+                            value: 'automod',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Profils',
+                            value: 'profiles',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Économie',
+                            value: 'economy',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Invitations',
+                            value: 'invites',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Mini-Jeux',
+                            value: 'minigames',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Statistiques',
+                            value: 'stats',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Équipes',
+                            value: 'teams',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'Captcha',
+                            value: 'captcha',
+                            emoji: '1247866358645919745',
+                        },
+                        {
+                            label: 'ModMail',
+                            value: 'modmail',
+                            emoji: '1247866358645919745',
+                        },
                     ])
             )
 
@@ -469,6 +574,27 @@ Permet de créer un émoji sur le serveur.
 **\`${pf}buttonrole <role> <description>\`**
 Créer un embed pour que les gens puissent cliqué pour avoir un role.
 
+**\`${pf}rolemenu create\`**
+Crée un menu de rôles avancé avec des catégories et des sélecteurs.
+
+**\`${pf}rolemenu category add/remove <menuId> <nom/categoryId>\`**
+Gère les catégories du menu de rôles.
+
+**\`${pf}rolemenu role add/remove <menuId> <categoryId> <role> [description]\`**
+Ajoute ou retire des rôles à une catégorie du menu.
+
+**\`${pf}rolemenu show <menuId>\`**
+Affiche le menu de rôles dans le salon actuel.
+
+**\`${pf}rolemenu list\`**
+Affiche la liste des menus de rôles du serveur.
+
+**\`${pf}rolemenu delete <menuId>\`**
+Supprime un menu de rôles.
+
+**\`${pf}rolelog <salon>\`**
+Configure les logs des changements de rôles.
+
 **\`${pf}join settings\`**
 Permet de configurer les paramètres du join settings.
                 
@@ -477,6 +603,17 @@ Attribue un role automatiquement aux membres qui rejoignent le serveur.
                 
 **\`${pf}join channel <salon>\`**
 Choisis le salon où seront envoyés les messages de bienvenue.
+
+**\`${pf}setupserver\`**
+Configure automatiquement le serveur avec tous les salons et rôles nécessaires:
+- Crée tous les salons de logs (messages, modération, raid, etc.)
+- Crée des salons généraux (texte et vocaux)
+- Crée des salons pour les mini-jeux
+- Crée des salons pour les tickets et le ModMail
+- Crée des salons pour l'économie
+- Crée des salons pour la modération
+- Crée tous les rôles nécessaires (admin, modérateur, membre, etc.)
+- Configure automatiquement tous les systèmes
 
 `)
                 .setFooter({ text: `${footer} | Préfixe : ${pf}` })
@@ -550,28 +687,35 @@ Unmute un membre en vocal.
                 .setDescription(`
 *Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
 
-**\`${pf}presetlogs\`**
-Créer et configure automatiquement tous les salons logs.
+**\`${pf}logsystem\`**
+Nouveau système centralisé de logs avec configuration complète:
+**\`${pf}logsystem enable/disable <type>\`** - Active/désactive un type de logs
+**\`${pf}logsystem channel <type> <salon>\`** - Configure le salon pour un type de logs
+**\`${pf}logsystem test <type>\`** - Teste un type de logs
 
-**\`${pf}messagelog\`**
-Affiche toutes les logs des messages supprimés ou édités.
+**Types de logs disponibles:**
+• **memberLogs** - Arrivées et départs de membres
+• **messageLogs** - Édition et suppression de messages
+• **moderationLogs** - Actions de modération (ban, kick, mute)
+• **raidLogs** - Détection d'activités suspectes et antiraid
+• **ticketLogs** - Ouverture et fermeture de tickets
+• **giveawayLogs** - Création et fin de giveaways
+• **boostLogs** - Boost du serveur
+• **roleLogs** - Ajout et retrait de rôles
+• **modmailLogs** - Tickets de contact au staff
+• **captchaLogs** - Vérification par captcha
+• **serverLogs** - Modifications du serveur (salons, rôles, etc.)
 
-**\`${pf}modlog\`**
-Affiche toutes les logs des actions de modération.
-
-**\`${pf}ticketlog\`**
-Affiche les logs des tickets.
-
-**\`${pf}giveawaylog\`**
-Affiche les logs de chaque Giveaway lancé dans le serveur.
-
-**\`${pf}boostlog\`**
-Affiche une log dès qu'une personne boostera le serveur.
-
-**\`${pf}raidlog\`**
-Permet d'afficher les logs des embeds supprimés.
-
-                    
+**Commandes Legacy (pour compatibilité):**
+**\`${pf}presetlogs\`** - Créer automatiquement tous les salons logs
+**\`${pf}messagelog\`** - Configurer les logs de messages
+**\`${pf}modlog\`** - Configurer les logs de modération
+**\`${pf}ticketlog\`** - Configurer les logs de tickets
+**\`${pf}giveawaylog\`** - Configurer les logs de giveaways
+**\`${pf}boostlog\`** - Configurer les logs de boosts
+**\`${pf}raidlog\`** - Configurer les logs d'antiraid
+**\`${pf}modmaillog\`** - Configurer les logs de modmail
+**\`${pf}rolelog\`** - Configurer les logs de rôles
                           `)
                 .setFooter({ text: `${footer} | Préfixe : ${pf}` })
                 .setColor(color)
@@ -672,6 +816,300 @@ Permet de redémarrer le bot.
                 .setFooter({ text: `${footer} | Préfixe : ${pf}` })
                 .setColor(color)
 
+            // Embed Levels
+            const levels = new Discord.MessageEmbed()
+                .setTitle('Système de Niveaux')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}rank [membre]\`**
+Affiche votre niveau et XP ou ceux d'un autre membre.
+
+**\`${pf}leaderboard\`**
+Affiche le classement des 10 membres avec le plus haut niveau sur le serveur.
+
+**\`${pf}levelconfig\`**
+Configure le système de niveaux avec les options suivantes:
+- Activer/désactiver le système de niveaux
+- Définir un salon d'annonce pour les passages de niveau
+- Configurer le taux d'XP (1x à 5x)
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Counters
+            const counters = new Discord.MessageEmbed()
+                .setTitle('Système de Compteurs')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}counterconfig\`**
+Configure les compteurs du serveur avec les options suivantes:
+- Compteur de membres (affiche le nombre total de membres)
+- Compteur de bots (affiche le nombre de bots)
+- Compteur de salons (affiche le nombre de salons)
+- Compteur de rôles (affiche le nombre de rôles)
+- Compteur de boosts (affiche le nombre de boosts du serveur)
+- Compteur de membres en ligne (affiche le nombre de membres en ligne)
+- Désactiver un compteur
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Music
+            const music = new Discord.MessageEmbed()
+                .setTitle('Système de Musique')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}play <lien/titre>\`**
+Joue une musique depuis YouTube, Spotify ou SoundCloud.
+
+**\`${pf}skip\`**
+Passe à la musique suivante dans la file d'attente.
+
+**\`${pf}stop\`**
+Arrête la lecture et vide la file d'attente.
+
+**\`${pf}pause\`**
+Met en pause la musique en cours de lecture.
+
+**\`${pf}resume\`**
+Reprend la lecture de la musique en pause.
+
+**\`${pf}queue\`**
+Affiche la liste des musiques dans la file d'attente.
+
+**\`${pf}volume <1-100>\`**
+Règle le volume de la musique (entre 1 et 100).
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Automod
+            const automod = new Discord.MessageEmbed()
+                .setTitle('Système d\'Auto-Modération')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}automodconfig\`**
+Configure les paramètres d'auto-modération avec les options suivantes:
+- Anti-liens (détection et sanction des liens non autorisés)
+- Anti-spam (détection et sanction du spam)
+- Anti-insultes (détection et sanction des insultes)
+- Anti-mentions (détection et sanction des mentions excessives)
+- Salon de logs (configuration du salon où seront envoyés les logs d'auto-modération)
+- Sanction (configuration de la sanction à appliquer)
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Profiles
+            const profiles = new Discord.MessageEmbed()
+                .setTitle('Système de Profils Personnalisés')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}profile [utilisateur]\`**
+Affiche votre profil personnalisé ou celui d'un autre utilisateur.
+
+**\`${pf}setbio <texte>\`**
+Définit votre biographie personnalisée (maximum 250 caractères).
+
+**\`${pf}setcolor <couleur>\`**
+Définit la couleur de votre profil (format hexadécimal, ex: #FF0000).
+
+**\`${pf}setbanner <lien>\`**
+Définit une bannière pour votre profil (doit être une image).
+
+**\`${pf}badges <add/remove/list> [utilisateur] [badge]\`**
+Gère les badges des utilisateurs (admin, mod, booster, dev, vip).
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Economy
+            const economy = new Discord.MessageEmbed()
+                .setTitle('Système d\'Économie')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}balance [utilisateur]\`**
+Affiche votre solde ou celui d'un autre utilisateur.
+
+**\`${pf}daily\`**
+Récupère votre récompense quotidienne avec système de streak.
+
+**\`${pf}work\`**
+Travaille pour gagner de l'argent (15 métiers différents).
+
+**\`${pf}pay <utilisateur> <montant>\`**
+Transfère de l'argent à un autre utilisateur.
+
+**\`${pf}shop\`**
+Affiche la boutique du serveur.
+
+**\`${pf}shop buy <numéro>\`**
+Achète un objet dans la boutique.
+
+**\`${pf}shop add <item> <prix>\`**
+Ajoute un objet à la boutique (admin seulement).
+
+**\`${pf}shop remove <numéro>\`**
+Supprime un objet de la boutique (admin seulement).
+
+**\`${pf}inventory [utilisateur]\`**
+Affiche votre inventaire ou celui d'un autre utilisateur.
+
+**\`${pf}ecoleaderboard\`**
+Affiche le classement des 10 utilisateurs les plus riches.
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Invites
+            const invites = new Discord.MessageEmbed()
+                .setTitle('Système de Traceur d\'Invitation')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}invites [utilisateur]\`**
+Affiche vos statistiques d'invitation ou celles d'un autre utilisateur.
+
+**\`${pf}invitesleaderboard\`**
+Affiche le classement des 10 meilleurs inviteurs du serveur.
+
+**\`${pf}inviteconfig\`**
+Configure le système de traceur d'invitation avec les options suivantes:
+- Activer/désactiver le système d'invitation
+- Configurer un salon d'annonce pour les messages d'accueil
+- Personnaliser le message d'accueil
+- Réinitialiser toutes les données d'invitation
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Minigames
+            const minigames = new Discord.MessageEmbed()
+                .setTitle('Système de Mini-Jeux')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}coinflip <pile/face> <montant>\`**
+Pariez sur le résultat d'un lancer de pièce.
+
+**\`${pf}dice <nombre 1-6> <montant>\`**
+Pariez sur le résultat d'un lancer de dé.
+
+**\`${pf}rps <pierre/feuille/ciseaux> [montant]\`**
+Jouez à pierre-feuille-ciseaux contre le bot.
+
+**\`${pf}8ball <question>\`**
+Posez une question à la boule magique et obtenez une réponse aléatoire.
+
+**\`${pf}slots <montant>\`**
+Jouez à la machine à sous avec différents symboles et gains.
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Stats
+            const stats = new Discord.MessageEmbed()
+                .setTitle('Système de Statistiques')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}serverstats\`**
+Affiche des statistiques détaillées sur le serveur.
+
+**\`${pf}userstats [utilisateur]\`**
+Affiche des statistiques détaillées sur un utilisateur.
+
+**\`${pf}botstats\`**
+Affiche des statistiques détaillées sur le bot.
+
+**\`${pf}messagestats [utilisateur]\`**
+Affiche des statistiques sur les messages du serveur ou d'un utilisateur.
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Teams
+            const teams = new Discord.MessageEmbed()
+                .setTitle('Système d\'Équipes')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}teamcreate <nom> [description]\`**
+Crée une nouvelle équipe dont vous serez le propriétaire.
+
+**\`${pf}teamdelete\`**
+Supprime votre équipe (propriétaire uniquement).
+
+**\`${pf}teamjoin <nom>\`**
+Rejoignez une équipe existante.
+
+**\`${pf}teamleave\`**
+Quittez votre équipe actuelle.
+
+**\`${pf}teaminvite <membre>\`**
+Invitez un membre à rejoindre votre équipe (propriétaire/admin uniquement).
+
+**\`${pf}teaminfo [nom]\`**
+Affiche des informations détaillées sur votre équipe ou une équipe spécifiée.
+
+**\`${pf}teamlist\`**
+Affiche la liste de toutes les équipes du serveur.
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            // Embed Captcha
+            // Embed ModMail
+            const modmail = new Discord.MessageEmbed()
+                .setTitle('Système de ModMail')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}modmail\`**
+Ouvre un ticket ModMail pour contacter le staff du serveur.
+
+**\`${pf}modmailconfig\`**
+Configure le système de ModMail avec les options suivantes:
+- Activer/désactiver le système de ModMail
+- Définir un salon de logs pour les tickets ModMail
+- Définir une catégorie où les tickets ModMail seront créés
+- Définir un rôle qui aura accès aux tickets ModMail
+- Personnaliser le message d'accueil envoyé aux utilisateurs
+
+**\`${pf}reply <message>\`**
+Permet au staff de répondre à un utilisateur via un ticket ModMail.
+
+**\`${pf}close [raison]\`**
+Ferme un ticket ModMail avec une raison optionnelle.
+
+**\`${pf}modmaillog <salon>\`**
+Configure le salon où les logs ModMail seront envoyées.
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
+
+            const captcha = new Discord.MessageEmbed()
+                .setTitle('Système de Captcha')
+                .setDescription(`
+*Les paramètres encadrés par* \`<>\` *sont obligatoires, tandis que ceux encadrés par* \`[]\` *sont facultatifs.*
+
+**\`${pf}captchaconfig\`**
+Configure le système de captcha avec les options suivantes:
+- Activer/désactiver le système de captcha
+- Définir un salon de vérification où les captchas seront envoyés
+- Définir un rôle vérifié qui sera donné aux utilisateurs qui complètent le captcha
+- Configurer la difficulté du captcha (facile, moyen, difficile)
+- Définir un délai d'expiration pour la vérification (30-600 secondes)
+- Tester le captcha pour voir à quoi il ressemble
+`)
+                .setFooter({ text: `${footer} | Préfixe : ${pf}` })
+                .setColor(color)
 
         message.channel.send({ embeds: [Help], components: [row] }).then(async msg => {
             const collector = message.channel.createMessageComponentCollector({
@@ -697,6 +1135,30 @@ Permet de redémarrer le bot.
                     msg.edit({ embeds: [Gestion], components: [row] });
                 } else if (value === "logs") {
                     msg.edit({ embeds: [logs], components: [row] });
+                } else if (value === "levels") {
+                    msg.edit({ embeds: [levels], components: [row] });
+                } else if (value === "counters") {
+                    msg.edit({ embeds: [counters], components: [row] });
+                } else if (value === "music") {
+                    msg.edit({ embeds: [music], components: [row] });
+                } else if (value === "automod") {
+                    msg.edit({ embeds: [automod], components: [row] });
+                } else if (value === "profiles") {
+                    msg.edit({ embeds: [profiles], components: [row] });
+                } else if (value === "economy") {
+                    msg.edit({ embeds: [economy], components: [row] });
+                } else if (value === "invites") {
+                    msg.edit({ embeds: [invites], components: [row] });
+                } else if (value === "minigames") {
+                    msg.edit({ embeds: [minigames], components: [row] });
+                } else if (value === "stats") {
+                    msg.edit({ embeds: [stats], components: [row] });
+                } else if (value === "teams") {
+                    msg.edit({ embeds: [teams], components: [row] });
+                } else if (value === "captcha") {
+                    msg.edit({ embeds: [captcha], components: [row] });
+                } else if (value === "modmail") {
+                    msg.edit({ embeds: [modmail], components: [row] });
                 }
             });
         });

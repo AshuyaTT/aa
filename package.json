@@ -5,19 +5,38 @@
   "author": "4wip",
   "main": "index.js",
   "scripts": {
-    "start": "node index.js"
+    "start": "node --require ./polyfill-readablestream.js index.js",
+    "render-start": "node --require ./polyfill-readablestream.js index.js",
+    "setup": "node install.js",
+    "postinstall": "echo \"Please run 'npm run setup' for a clean installation without errors\""
+  },
+  "engines": {
+    "node": ">=14.0.0 <17.0.0"
+  },
+  "resolutions": {
+    "better-sqlite3": "7.4.3"
   },
   "dependencies": {
+    "@distube/soundcloud": "^1.3.0",
+    "@distube/yt-dlp": "^0.0.1",
     "discord-fetch-all": "^3.0.2",
     "discord-giveaways": "5.1.1",
-    "discord.js": "^13.17.1",
+    "discord.js": "^13.14.0",
     "discordjs-button-pagination": "^1.0.7",
+    "distube": "^3.3.4",
+    "dotenv": "^16.0.3",
+    "ffmpeg-static": "^5.1.0",
     "fs": "^0.0.1-security",
     "hastebin-gen": "^2.0.5",
+    "keyv": "^4.5.4",
     "moment": "^2.29.1",
     "moment-duration": "^0.0.6",
     "moment-duration-format": "^2.3.2",
-    "ms": "^3.0.0-canary.1",
-    "quick.db": "^7.1.3"
+    "ms": "^2.1.3",
+    "quick.db": "file:./quick-db-substitute",
+    "undici": "^4.0.0"
+  },
+  "optionalDependencies": {
+    "web-streams-polyfill": "^3.2.1"
   }
 }
